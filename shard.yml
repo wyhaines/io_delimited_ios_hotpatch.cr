@@ -1,0 +1,9 @@
+name: io_delimited_ios_hotpatch
+version: 0.1.0
+
+authors:
+  - Kirk Haines <wyhaines@gmail.com>
+
+crystal: '>= 1.12.2'
+
+license: MIT
