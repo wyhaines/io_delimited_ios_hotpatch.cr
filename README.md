@@ -11,7 +11,7 @@ This current fix doesn't address the root problem, but it does address the sympt
    ```yaml
    dependencies:
      io_delimited_ios_hotpatch:
-       github: your-github-user/io_delimited_ios_hotpatch
+       github: wyhaines/io_delimited_ios_hotpatch
    ```
 
 2. Run `shards install`
