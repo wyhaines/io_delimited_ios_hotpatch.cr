@@ -51,18 +51,7 @@ class IO::Delimited < IO
         next_index = @active_delimiter_buffer.index(first_byte, 1)
 
         # We read up to that new match, if any, or the entire buffer
-        #read_bytes = next_index || [@active_delimiter_buffer.size, slice.size].min
-        read_bytes = next_index || @active_delimiter_buffer.size
-
-        # This is the patch. If the slice is smaller than what we need to read,
-        # we need a new slice that is large enough to hold the data. This code creates
-        # a new slice, copies the data from the old slice, and then assigns the new slice
-        # to the slice variable.
-        if slice.size < read_bytes
-          _slice = Bytes.new(read_bytes)
-          _slice.copy_from(slice)
-          slice = _slice
-        end
+        read_bytes = Math.min(next_index || @active_delimiter_buffer.size, slice.size)
 
         slice.copy_from(@active_delimiter_buffer[0, read_bytes])
         slice += read_bytes
